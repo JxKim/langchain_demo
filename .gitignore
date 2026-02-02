@@ -1,0 +1,5 @@
+.env
+playground
+.venv
+__pycache__
+assets/
