@@ -94,14 +94,3 @@ print(search_res)
 print("开始混合检索")
 hybrid_res = hybrid_search(client,collection_name="demo_collection",query_sparse_vector=sparse_vector,query_dense_vector=dense_vector)
 print(hybrid_res)
-
-$ffmpeg = 'C:\Program Files (x86)\EVCapture\ffmpeg.exe'
-$srcDir = 'D:\PycharmProjects\lessons\demo_class\LangChainDemo\day01 - 副本'
-$dstDir = 'D:\PycharmProjects\lessons\demo_class\LangChainDemo\day01 - 副本_裁剪_1366x768'
-New-Item -ItemType Directory -Force -Path $dstDir | Out-Null
-
-Get-ChildItem -LiteralPath $srcDir -Filter '*.mp4' | Sort-Object Name | ForEach-Object {
-  $in = $_.FullName
-  $out = Join-Path $dstDir $_.Name
-  & $ffmpeg -hide_banner -y -i $in -vf 'crop=1366:768:0:0' -c:v libx264 -preset veryfast -crf 18 -c:a copy -movflags +faststart $out
-}
