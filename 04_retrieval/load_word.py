@@ -1,17 +1,23 @@
-def word_loader_demo():
+def load_word_demo():
+
+    # 1、导入langchain unstructured.io word loader
     from langchain_community.document_loaders import UnstructuredWordDocumentLoader
-    docs = UnstructuredWordDocumentLoader(
-        # 文件路径
-        file_path="assets/sample.docx",
-        # 加载模式:
-        #   single 返回单个Document对象
-        #   elements 按标题等元素切分文档
-        mode="elements",
-    ).load()
+    # 2、构造Loader实例
 
-    for doc in docs[230:260]: # 从文档中间选取30个文档查看结构
+    docx_loader = UnstructuredWordDocumentLoader(
+        file_path="./assets/sample.docx",
+        mode="elements"
+    )
+
+    # 3、调用loader当中的load()方法
+
+    document_list = docx_loader.load()
+
+    for doc in document_list[230:260]:
+        print('doc的元数据信息：')
+        print(doc.metadata)
+        print("doc的文本内容字符串：")
         print(doc.page_content)
-        print(doc.metadata,end="\n============\n")
+        print("="*50)
 
-if __name__ == "__main__":
-    word_loader_demo()
+load_word_demo()

@@ -40,6 +40,7 @@ def enrich_document_info(document_list:List[Document]):
             stack.append((category_depth,doc.page_content))
         
         else:
+            # title_1 > title_2> title_3> 
             title_level_info = " > ".join([title for _,title in stack])
             doc_dict={
                 "meta_data":doc.metadata,
