@@ -64,7 +64,7 @@ message_list.append(
                 "role": "tool",
                 "tool_call_id": tool_call_id,
                 "content": json.dumps({"weather": weather}),
-            }
+    }
 
 )
 # 5、再次调用OPENAI API ，将上面的所有信息列表，都传给OPENAI API，得到最终结果
