@@ -32,7 +32,6 @@ async def main():
     )
 
     res = await agent.ainvoke({"messages": [{"role": "user", "content": "帮我查下2026年2月10号从北京到武汉的车票"}]})
-
     ai_message = res["messages"][-1].content
 
     print(ai_message)
